@@ -25,6 +25,6 @@ That is starting point of the challenge provided by Overthewire community.
 
 3. And find some secret file that containt a secret.
 
-## 3. What I learn in that initial level of bandit?
+## What I learn in that initial level of bandit?
 
 Well, in that first level i have learned how to sign in the ssh server with some credentials and use them to enter and got the special secret that maybe will be important for my progress in this challange.
