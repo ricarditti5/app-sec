@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Roadmap AppSec e DevSecOps</title>
+<style>
+:root{--bg:#fafafa;--fg:#161616;--muted:#5d5d5d;--main:#ffe599;--main-fg:#161616;--main-b:#161616;--sub:#fff;--sub-b:#d3b94c;--line:#2b78e4;--done:#c9ecc9;--done-b:#3d8b3d;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15150f;--fg:#f1eee0;--muted:#b3af9b;--main:#e8bf2a;--main-fg:#161616;--main-b:#f1eee0;--sub:#232218;--sub-b:#6b5f22;--line:#6fa3f0;--done:#1f3a1f;--done-b:#69b869}}
+:root[data-theme="dark"]{--bg:#15150f;--fg:#f1eee0;--muted:#b3af9b;--main:#e8bf2a;--main-fg:#161616;--main-b:#f1eee0;--sub:#232218;--sub-b:#6b5f22;--line:#6fa3f0;--done:#1f3a1f;--done-b:#69b869}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:980px;margin:0 auto;padding:28px 16px 56px}
+h1{font-size:clamp(1.6rem,4vw,2.3rem);margin:0 0 6px;text-align:center;letter-spacing:-.01em}
+.lead{text-align:center;color:var(--muted);margin:0 auto 18px;max-width:60ch}
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;justify-content:center;margin-bottom:30px;font-size:.88rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:22px;height:14px;border:2px solid var(--main-b);background:var(--main);border-radius:3px}
+.sw.t{border:1.5px solid var(--sub-b);background:var(--sub)}
+.sw.o{border:2px dashed var(--muted);background:transparent}
+.sw.d{border:1.5px solid var(--done-b);background:var(--done)}
+#map{position:relative}
+#map::before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:2px dashed var(--line);transform:translateX(-1px)}
+.row{position:relative;display:grid;grid-template-columns:1fr minmax(210px,270px) 1fr;gap:0 34px;align-items:center;margin-bottom:34px}
+.col{display:flex;flex-direction:column;gap:8px}
+.left{align-items:flex-end}.right{align-items:flex-start}
+.node,.item{cursor:pointer;font:inherit;text-align:left}
+.node{background:var(--main);color:var(--main-fg);border:2px solid var(--main-b);border-radius:6px;padding:12px 14px;text-align:center;font-weight:650;font-size:1.05rem;position:relative;z-index:1;box-shadow:3px 3px 0 var(--main-b)}
+.node small{display:block;font-weight:400;font-size:.8rem;margin-top:5px;opacity:.85}
+.item{background:var(--sub);color:var(--fg);border:1.5px solid var(--sub-b);border-radius:5px;padding:7px 11px;font-size:.92rem;max-width:100%;position:relative}
+.left .item::after,.right .item::before{content:"";position:absolute;top:50%;width:34px;border-top:1.5px dotted var(--line)}
+.left .item::after{left:100%}.right .item::before{right:100%}
+.grp{font-weight:650;font-size:.95rem;margin:0 0 2px}
+.opt .node{background:transparent;color:var(--fg);border:2px dashed var(--muted);box-shadow:none}
+.opt .item{border-style:dashed;border-color:var(--muted)}
+.done.node,.node.done{background:var(--done);color:var(--fg);border-color:var(--done-b);box-shadow:3px 3px 0 var(--done-b)}
+.item.done{background:var(--done);border-color:var(--done-b)}
+.node:focus-visible,.item:focus-visible{outline:3px solid var(--line);outline-offset:2px}
+.start{max-width:520px;margin:0 auto 34px;position:relative;z-index:1;background:var(--sub);border:2px solid var(--line);border-radius:8px;padding:12px 16px;text-align:center}
+.start b{display:block;margin-bottom:3px}
+.start span{color:var(--muted);font-size:.92rem}
+@media (max-width:720px){
+#map::before{left:10px}
+.row{grid-template-columns:1fr;gap:10px;padding-left:28px;margin-bottom:28px}
+.node{order:-1}.col{align-items:stretch}
+.left .item::after,.right .item::before{display:none}
+.start{margin-left:28px;margin-right:0}
+}
+</style>
+</head>
+<body>
+<main>
+<h1>Roadmap AppSec e DevSecOps</h1>
+<p class="lead">Para quem vem de backend em Go. Segue os passos amarelos por ordem e clica numa caixa para a marcar como feita.</p>
+<div class="legend">
+<span><i class="sw"></i>Passo principal</span><span><i class="sw t"></i>Tópico</span><span><i class="sw o"></i>Opcional</span><span><i class="sw d"></i>Feito</span>
+</div>
+<div class="start"><b>Ponto de partida</b><span>Go (GORM, Fiber), PostgreSQL, Redis, Docker base, validação, auth, hashing, rate limit, CORS, CSP, TLS, modelação de BD, Linux básico</span></div>
+<div id="map"></div>
+</main>
+<script>
+var P=[
+{t:"1. Linux",c:"Navegas, procuras e mexes em permissões sem recorrer ao Google a cada passo.",
+L:["OverTheWire Bandit","Permissões, SUID e SGID","Utilizadores e grupos"],R:["Processos e sinais","Cron e systemd","Shell, pipes e redirecionamento"]},
+{t:"2. Redes",c:"Explicas o que acontece do URL até à página e vês isso numa captura de pacotes.",
+L:["TCP/UDP e modelo TCP/IP","DNS","HTTP/HTTPS e handshake TLS","SSH, SMB e FTP (o essencial)"],R:["Recon passivo vs ativo","Nmap (scans e NSE)","Wireshark e tcpdump","Firewalls (ufw e iptables)"]},
+{t:"3. Web e AppSec",c:"Exploras e corriges as falhas comuns numa app tua e escreves um relatório curto.",
+L:["OWASP Top 10","PortSwigger Web Security Academy","OWASP Juice Shop","Burp Suite (Proxy, Repeater, Intruder)","ffuf, gobuster e Hydra"],R:["SQLi, XSS e CSRF","IDOR e controlo de acessos","Autenticação quebrada (reset, 2FA)","SSRF, path traversal e file upload","XXE e race conditions","Atacar os teus projetos Go","Mini relatórios com CVSS"]},
+{t:"4. Núcleo AppSec e DevSecOps",c:"Fazes revisão de código e threat model completos de um projeto teu.",
+L:["Revisão de código seguro em Go","gosec, govulncheck e Semgrep","Threat modeling (STRIDE)","Logs e deteção básica"],R:["OAuth2, OIDC, JWT e RBAC","OWASP API Security Top 10","SAST, DAST e SCA","Triagem de falsos positivos"]},
+{t:"5. Escolher o ramo",c:"Decide pelo que gostas mais: encontrar falhas em código ou automatizar pipelines.",
+lh:"AppSec",L:["Secure SDLC","Gestão de vulnerabilidades","Remediações para developers","Criptografia aplicada","Bug bounty"],
+rh:"DevSecOps",R:["CI/CD seguro (GitHub Actions)","Secrets (gitleaks)","Supply chain e SBOM (Trivy, Syft)","Docker hardening","Kubernetes security","Scan de IaC e IAM de cloud"]},
+{t:"6. System design",c:"Em paralelo, 1 a 2 sessões por semana a partir da fase 3.",
+L:["Escalabilidade e load balancing","Caches e filas"],R:["Bases de dados e replicação","Onde entra a segurança na arquitetura"]},
+{t:"Pentest alargado",c:"Só se te inclinares para pentest ou red team.",opt:1,
+L:["Metasploit e meterpreter","Privesc Linux e Windows (GTFOBins)","PTES e MITRE ATT&CK"],R:["Windows e registry","Active Directory e Kerberos","BloodHound e Kerberoasting"]}
+];
+var store={};
+try{store=JSON.parse(localStorage.getItem("roadmap-done")||"{}")||{}}catch(e){store={}}
+function save(){try{localStorage.setItem("roadmap-done",JSON.stringify(store))}catch(e){}}
+function btn(cls,txt,key,extra){
+ var b=document.createElement("button");b.type="button";b.className=cls;b.dataset.k=key;
+ b.textContent=txt;if(extra){var s=document.createElement("small");s.textContent=extra;b.appendChild(s)}
+ if(store[key])b.classList.add("done");
+ b.addEventListener("click",function(){b.classList.toggle("done");if(b.classList.contains("done"))store[key]=1;else delete store[key];save()});
+ return b}
+function col(side,items,head,i){
+ var d=document.createElement("div");d.className="col "+side;
+ if(head){var h=document.createElement("p");h.className="grp";h.textContent=head;d.appendChild(h)}
+ items.forEach(function(x,j){d.appendChild(btn("item",x,"i"+i+side+j))});return d}
+var map=document.getElementById("map");
+P.forEach(function(p,i){
+ var r=document.createElement("section");r.className="row"+(p.opt?" opt":"");
+ r.appendChild(col("left",p.L,p.lh,i));
+ r.appendChild(btn("node",p.t,"n"+i,p.c));
+ r.appendChild(col("right",p.R,p.rh,i));
+ map.appendChild(r)});
+</script>
+</body>
+</html>

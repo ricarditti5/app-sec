@@ -11,6 +11,9 @@ That is starting point of the challenge provided by Overthewire community.
 
 ### 1. Search how ssh works.
 - I use the material that overthewire provide in their first module level.
+ ````bash
+ ssh -p 2220 bandit0@bandit.labs.overthewire.org
+ ````
 
 ![1](/writeups/bandit-linux/img/image.png)
 
