@@ -4,6 +4,7 @@ This is the introduction of Overthewire labs to pratice my skills.
 
 ## Challenge
 [Bandit-Level 0](https://overthewire.org/wargames/bandit/bandit0.html)
+[Bandit-Level 0 --> Level 1](https://overthewire.org/wargames/bandit/bandit1.html)
 
 That is starting point of the challenge provided by Overthewire community.
 

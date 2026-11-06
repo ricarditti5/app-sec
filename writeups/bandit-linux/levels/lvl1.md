@@ -3,7 +3,7 @@
 This is the level 1 of Overthewire labs to pratice my skills.
 
 ## Challenge
-[Bandit-Level 1](https://overthewire.org/wargames/bandit/bandit1.html)
+[Bandit-Level 1 --> Level 2](https://overthewire.org/wargames/bandit/bandit2.html)
 
 
 

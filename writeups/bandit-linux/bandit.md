@@ -16,3 +16,5 @@ export TERM=xterm
 [Bandit-Level 1](/writeups/bandit-linux/levels/lvl1.md)
 
 [Bandit-Level 2](/writeups/bandit-linux/levels/lvl2.md)
+
+[Bandit-Level 3](/writeups/bandit-linux/levels/lvl3.md)
