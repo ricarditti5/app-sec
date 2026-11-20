@@ -13,4 +13,7 @@ This is the level 11 of Overthewire labs to pratice my skills.
  ssh -p 2220 bandit11@bandit.labs.overthewire.org
  ````
 
+- `cat data.txt | tr 'A-Za-z' 'N-ZA-Mn-za-m'`
+
 ## What I learn in that level of bandit?
+- I search to know more about rot13 that chalange say, it was useful to decode the file and get the password.
